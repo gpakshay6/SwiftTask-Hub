@@ -13,68 +13,90 @@ import Container from '@mui/material/Container';
 
 const Login = () => {
   const navigate = useNavigate();
-  let token = localStorage.getItem('token')
+  let token = localStorage.getItem('token');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     if (data.get('email') !== '' && data.get('password') !== '') {
-      navigate('home')
-      localStorage.setItem('token', 'wrsedtrfghrsetdftg')
+      navigate('home');
+      localStorage.setItem('token', 'wrsedtrfghrsetdftg');
     }
   };
 
   useEffect(() => {
     if (token) {
-      navigate('home')
+      navigate('home');
     }
-  }, [token])
+  }, [token]);
 
   return (
     <>
-      <div style={ { display: 'flex', alignItems: 'center', margin: '15px' } }>
-        <img src="../Slogo.png" alt="Logo" style={ { flexGrow: 0, height: '40px', width: '40px', backgroundColor: '#fff', marginRight: '5px' } } />
-        <Typography
-          component="h1"
-          variant="h6"
-          color="inherit"
-        >
+      <div style={{ display: 'flex', alignItems: 'center', margin: '15px' }}>
+        <img
+          src="../Slogo.png"
+          alt="Logo"
+          style={{
+            flexGrow: 0,
+            height: '40px',
+            width: '40px',
+            backgroundColor: '#fff',
+            marginRight: '5px',
+          }}
+        />
+        <Typography component="h1" variant="h6" color="inherit">
           SwiftTask Hub
         </Typography>
       </div>
-      <Grid container component="main" sx={ { height: '80vh' } }>
+      <Grid container component="main" sx={{ height: '80vh' }}>
         <Grid
           item
-          xs={ false }
-          sm={ 4 }
-          md={ 7 }
-          sx={ {
-            backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage:
+              'url(https://source.unsplash.com/random?wallpapers)',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-          } }
+          }}
         />
-        <Grid item sm={12} md={ 12 } lg={ 5 }>
+        <Grid item sm={12} md={12} lg={5}>
           <Container component="main" maxWidth="xs">
             <CssBaseline />
             <Box
-              sx={ {
+              sx={{
                 marginTop: 2,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                height:'80vh',
-              } }
+                height: '80vh',
+              }}
             >
-              <img src="../Slogo.png" alt="Logo" style={ { flexGrow: 0, height: '40px', width: '40px', backgroundColor: '#fff', borderRadius: '50%' } } />
+              <img
+                src="../Slogo.png"
+                alt="Logo"
+                style={{
+                  flexGrow: 0,
+                  height: '40px',
+                  width: '40px',
+                  backgroundColor: '#fff',
+                  borderRadius: '50%',
+                }}
+              />
               <Typography component="h1" variant="h6">
                 Sign in
               </Typography>
-              <Box component="form" onSubmit={ handleSubmit } noValidate sx={ { mt: 1 } }>
+              <Box
+                component="form"
+                onSubmit={handleSubmit}
+                noValidate
+                sx={{ mt: 1 }}
+              >
                 <TextField
                   margin="normal"
-                  size='small'
+                  size="small"
                   required
                   fullWidth
                   id="email"
@@ -85,7 +107,7 @@ const Login = () => {
                 />
                 <TextField
                   margin="normal"
-                  size='small'
+                  size="small"
                   required
                   fullWidth
                   name="password"
@@ -97,10 +119,10 @@ const Login = () => {
 
                 <Button
                   type="submit"
-                  size='medium'
+                  size="medium"
                   fullWidth
                   variant="contained"
-                  sx={ { mt: 3, mb: 2 } }
+                  sx={{ mt: 3, mb: 2 }}
                 >
                   Sign In
                 </Button>
@@ -112,7 +134,7 @@ const Login = () => {
                   </Grid>
                   <Grid item>
                     <Link href="register" variant="body2">
-                      { "Don't have an account? Register" }
+                      {"Don't have an account? Register"}
                     </Link>
                   </Grid>
                 </Grid>
@@ -123,6 +145,6 @@ const Login = () => {
       </Grid>
     </>
   );
-}
+};
 
-export default Login
+export default Login;
