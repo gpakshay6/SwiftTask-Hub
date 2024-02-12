@@ -20,7 +20,13 @@ const ActivityCard = ({ label, activities }) => {
         return (
           <>
             <Link to={`/${link}`} style={{ textDecoration: 'none' }}>
-              <Card variant="outlined" sx={{ margin: '10px 0px' }}>
+              <Card
+                variant="outlined"
+                sx={{
+                  margin: '10px 0px',
+                  boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+                }}
+              >
                 <CardActionArea>
                   <CardContent>
                     <Typography variant="subtitle2" color="text.primary">

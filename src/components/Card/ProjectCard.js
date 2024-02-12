@@ -29,7 +29,9 @@ const ProjectCard = ({ label, projects }) => {
           return (
             <Grid item xs={12} sm={6} md={6} lg={6} key={index}>
               <Link to={`/${link}`} style={{ textDecoration: 'none' }}>
-                <Card>
+                <Card
+                  sx={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}
+                >
                   <CardActionArea href="projects">
                     <CardContent>
                       <Typography
