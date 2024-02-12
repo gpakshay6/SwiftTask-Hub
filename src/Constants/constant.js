@@ -14,6 +14,21 @@ export const recentActivities = [
     title: "New task added: 'Client Presentation'",
     link: 'activity',
   },
+  {
+    id: 4,
+    title: "New task added: 'Client Presentation'",
+    link: 'activity',
+  },
+  {
+    id: 5,
+    title: "New task added: 'Client Presentation'",
+    link: 'activity',
+  },
+  {
+    id: 6,
+    title: "New task added: 'Client Presentation'",
+    link: 'activity',
+  },
 ];
 
 export const quickStats = [

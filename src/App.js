@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import { Container, Toolbar, CssBaseline } from '@mui/material';
+import { Header } from './components';
 import Login from './pages/Login/Login';
 import Register from './pages/Signup/Register';
 import Forget from './pages/Login/Forget';
-import Home from './pages/Dashboard/Home';
-import Activity from './pages/Dashboard/Activity';
-import Tasks from './pages/Dashboard/Tasks';
-import Projects from './pages/Dashboard/Projects';
+import Home from './pages/HomePage/Home';
+import Activity from './pages/HomePage/Activity';
+import ActivityDetails from './pages/HomePage/ActivityDetails';
+import Tasks from './pages/HomePage/Tasks';
+import Projects from './pages/HomePage/Projects';
 import NoPage from './pages/NoPage';
-import { Header } from './components';
+import { ActivitiesProvider } from './context/ActivitiesContext';
+
+const PrivateRoute = ({ component }) => {
+  const navigate = useNavigate();
+  let token = localStorage.getItem('token');
+  useEffect(() => {
+    if (!token) {
+      navigate('/');
+    }
+  }, [token, navigate]);
+  return (
+    <ActivitiesProvider>
+      <Toolbar />
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <Header />
+        {component}
+      </Container>
+    </ActivitiesProvider>
+  );
+};
 
 const App = () => {
   const defaultTheme = createTheme();
@@ -36,21 +57,15 @@ const App = () => {
             path="projects"
             element={<PrivateRoute component={<Projects />} />}
           />
+          <Route
+            path="/activity/:slug"
+            element={<PrivateRoute component={<ActivityDetails />} />}
+          />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
   );
 };
-
-const PrivateRoute = ({ component }) => (
-  <>
-    <Toolbar />
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <Header />
-      {component}
-    </Container>
-  </>
-);
 
 export default App;
