@@ -72,7 +72,12 @@ const TaskCard = ({ label, task }) => {
             <Grid item xs={12} sm={6} md={3} lg={3} key={index}>
               <Link to={`/${link}`} style={{ textDecoration: 'none' }}>
                 <Card
-                  sx={{ width: '100%', height: '100%', minHeight: 210 }}
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+                    minHeight: 210,
+                    boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+                  }}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={() => handleMouseLeave(index)}
                 >
