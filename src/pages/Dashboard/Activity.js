@@ -9,7 +9,7 @@ const Activity = () => {
     if (!token) {
       navigate('/');
     }
-  }, [token]);
+  }, [token, navigate]);
 
   return (
     <>
