@@ -9,6 +9,8 @@ import Forget from './pages/Login/Forget';
 import Home from './pages/HomePage/Home';
 import Activity from './pages/HomePage/Activity';
 import ActivityDetails from './pages/HomePage/ActivityDetails';
+import TasksDetails from './pages/HomePage/TasksDetails';
+import ProjectDetails from './pages/HomePage/ProjectDetails';
 import Tasks from './pages/HomePage/Tasks';
 import Projects from './pages/HomePage/Projects';
 import NoPage from './pages/NoPage';
@@ -60,6 +62,14 @@ const App = () => {
           <Route
             path="/activity/:slug"
             element={<PrivateRoute component={<ActivityDetails />} />}
+          />
+          <Route
+            path="/tasks/:slug"
+            element={<PrivateRoute component={<TasksDetails />} />}
+          />
+          <Route
+            path="/projects/:slug"
+            element={<PrivateRoute component={<ProjectDetails />} />}
           />
           <Route path="*" element={<NoPage />} />
         </Routes>

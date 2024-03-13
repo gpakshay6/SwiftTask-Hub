@@ -21,7 +21,7 @@ const ChipContainer = ({ priority }) => {
   const classes = useStyles();
 
   let chipClassName;
-  switch (priority.toLowerCase()) {
+  switch (priority?.toLowerCase()) {
     case 'low':
       chipClassName = classes.priorityLow;
       break;

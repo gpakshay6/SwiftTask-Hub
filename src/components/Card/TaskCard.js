@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   Card,
   CardActionArea,
@@ -10,18 +10,16 @@ import {
   Divider,
   Grid,
 } from '@mui/material';
-import {
-  Edit as EditIcon,
-  Delete as DeleteIcon,
-  Settings as SettingsIcon,
-  Share as ShareIcon,
-} from '@mui/icons-material';
+import { ActivitiesContext } from '../../context/ActivitiesContext';
+import { Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 const TaskCard = ({ label, task }) => {
   const [isHovered, setIsHovered] = useState(
-    new Array(task.length).fill(false)
+    new Array(task?.length).fill(false)
   );
+  const { showAll } = useContext(ActivitiesContext);
+  const visibleTask = showAll ? task : task?.slice(0, 4);
   const [hideActionsTimeouts, setHideActionsTimeouts] = useState([]);
 
   useEffect(() => {
@@ -66,11 +64,11 @@ const TaskCard = ({ label, task }) => {
         columnSpacing={2}
         sx={{ marginTop: '0px' }}
       >
-        {task?.map((item, index) => {
-          const { title, description, link } = item;
+        {visibleTask?.map((item, index) => {
+          const { id, title, description, link } = item;
           return (
             <Grid item xs={12} sm={6} md={3} lg={3} key={index}>
-              <Link to={`/${link}`} style={{ textDecoration: 'none' }}>
+              <Tooltip title="Edit ,Delete coming soon..." arrow>
                 <Card
                   sx={{
                     width: '100%',
@@ -81,19 +79,24 @@ const TaskCard = ({ label, task }) => {
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={() => handleMouseLeave(index)}
                 >
-                  <CardActionArea href="tasks">
-                    <CardContent>
-                      <Typography
-                        gutterBottom
-                        variant="subtitle1"
-                        component="div"
-                      >
-                        {title}
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary">
-                        {description}
-                      </Typography>
-                    </CardContent>
+                  <CardActionArea sx={{ height: 165 }}>
+                    <Link
+                      to={`/${link}/${id}`}
+                      style={{ textDecoration: 'none', color: 'inherit' }}
+                    >
+                      <CardContent>
+                        <Typography
+                          gutterBottom
+                          variant="subtitle1"
+                          component="div"
+                        >
+                          {title}
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          {description}
+                        </Typography>
+                      </CardContent>
+                    </Link>
                   </CardActionArea>
                   {isHovered[index] && (
                     <CardActions>
@@ -107,37 +110,29 @@ const TaskCard = ({ label, task }) => {
                           <DeleteIcon fontSize="small" />
                         </IconButton>
                       </Tooltip>
-                      <Tooltip title="Settings" arrow size="small">
-                        <IconButton color="inherit">
-                          <SettingsIcon fontSize="small" />
-                        </IconButton>
-                      </Tooltip>
-                      <Tooltip title="Share" arrow size="small">
-                        <IconButton color="inherit">
-                          <ShareIcon fontSize="small" />
-                        </IconButton>
-                      </Tooltip>
                     </CardActions>
                   )}
                 </Card>
-              </Link>
+              </Tooltip>
             </Grid>
           );
         })}
       </Grid>
-      <Link to="/tasks" style={{ textDecoration: 'none' }}>
-        <Typography
-          variant="caption"
-          sx={{
-            display: 'flex',
-            justifyContent: 'end',
-            alignItems: 'end',
-            margin: '5px 0px',
-          }}
-        >
-          View More
-        </Typography>
-      </Link>
+      {!showAll && (
+        <Link to="/tasks" style={{ textDecoration: 'none' }}>
+          <Typography
+            variant="caption"
+            sx={{
+              display: 'flex',
+              justifyContent: 'end',
+              alignItems: 'end',
+              margin: '5px 0px',
+            }}
+          >
+            View More
+          </Typography>
+        </Link>
+      )}
     </>
   );
 };

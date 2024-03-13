@@ -55,10 +55,10 @@ const CommonTable = ({ data, priority }) => {
                 </Typography>
               </TableCell>
               <TableCell>
-                {row.field === 'Status' ? (
+                {row?.field === 'Status' ? (
                   <Paper
                     className={classes.statusPaper}
-                    style={{ backgroundColor: getStatusColor(row.value) }}
+                    style={{ backgroundColor: getStatusColor(row?.value) }}
                   >
                     <Typography variant="body2" style={{ color: '#fff' }}>
                       {row.value}
