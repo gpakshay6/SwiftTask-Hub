@@ -26,7 +26,8 @@ const TaskCard = ({ label, task }) => {
     return () => {
       hideActionsTimeouts.forEach((timeout) => clearTimeout(timeout));
     };
-  }, [task, hideActionsTimeouts]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [task]);
 
   const handleMouseEnter = (index) => {
     setIsHovered((prev) => {
