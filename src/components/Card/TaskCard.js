@@ -26,7 +26,7 @@ const TaskCard = ({ label, task }) => {
     return () => {
       hideActionsTimeouts.forEach((timeout) => clearTimeout(timeout));
     };
-  }, [task]);
+  }, [task, hideActionsTimeouts]);
 
   const handleMouseEnter = (index) => {
     setIsHovered((prev) => {
