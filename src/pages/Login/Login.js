@@ -64,6 +64,7 @@ const Login = () => {
     if (token) {
       navigate('home');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   return (
