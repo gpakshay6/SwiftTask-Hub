@@ -7,7 +7,7 @@ import {
   ProjectCard,
   ActivityCard,
 } from '../../components';
-import { quickStats, tasks, projectOverview } from '../../Constants/constant';
+import { quickStats, tasks, projects } from '../../Constants/constant';
 import { ActivitiesContext } from '../../context/ActivitiesContext';
 
 const useStyles = makeStyles((theme) => ({
@@ -46,10 +46,7 @@ const Home = () => {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <ProjectCard
-              label={'Project Overview'}
-              projects={projectOverview}
-            />
+            <ProjectCard label={'Project Overview'} projects={projects} />
           </Paper>
         </Grid>
       </Grid>

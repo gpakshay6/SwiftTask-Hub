@@ -75,7 +75,7 @@ const Login = () => {
         </Typography>
       </div>
       <Grid container component="main" className={classes.mainContainer}>
-        <Grid item xs={false} sm={4} md={7} className={classes.background} />
+        <Grid item xs={false} lg={7} className={classes.background} />
         <Grid item sm={12} md={12} lg={5}>
           <Container component="main" maxWidth="xs">
             <CssBaseline />

@@ -1,24 +1,43 @@
 // ActivitiesContext.js
-import React, { createContext, useState } from 'react';
-import { recentActivities } from '../Constants/constant';
+import React, { createContext, useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { recentActivities, tasks, projects } from '../Constants/constant';
 
 export const ActivitiesContext = createContext();
 
 export const ActivitiesProvider = ({ children }) => {
+  const { slug } = useParams();
   const [activities, setActivities] = useState(recentActivities);
-  const [showAllActivities, setShowAllActivities] = useState(false);
-  const [selectedActivity, setSelectedActivity] = useState(null);
+  const [alltasks, setAllTasks] = useState(tasks);
+  const [projectDetail, setProjectDetail] = useState(projects);
+  const [showAll, setShowAll] = useState(false);
+  const [selected, setSelected] = useState(null);
 
-  const toggleShowAllActivities = () => {
-    setShowAllActivities(true);
+  useEffect(() => {
+    if (slug === undefined) {
+      setShowAll(false);
+      setSelected(null);
+    }
+  }, [slug]);
+
+  const toggleShowAll = () => {
+    setShowAll(true);
   };
 
   const resetActivities = () => {
-    setShowAllActivities(false);
+    setShowAll(false);
   };
 
   const getActivityById = (id) => {
     return activities.find((activity) => activity.id === id);
+  };
+
+  const getTaskById = (id) => {
+    return alltasks.find((task) => task.id === id);
+  };
+
+  const getProjectById = (id) => {
+    return projects.find((project) => project.id === id);
   };
 
   return (
@@ -26,12 +45,18 @@ export const ActivitiesProvider = ({ children }) => {
       value={{
         activities,
         setActivities,
-        showAllActivities,
-        toggleShowAllActivities,
+        alltasks,
+        setAllTasks,
+        projectDetail,
+        setProjectDetail,
+        showAll,
+        toggleShowAll,
         resetActivities,
         getActivityById,
-        selectedActivity,
-        setSelectedActivity,
+        getTaskById,
+        getProjectById,
+        selected,
+        setSelected,
       }}
     >
       {children}

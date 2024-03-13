@@ -5,10 +5,12 @@ import {
   CardContent,
   CardActions,
   Typography,
-  Button,
+  Tooltip,
   Divider,
   Grid,
+  IconButton,
 } from '@mui/material';
+import ShareIcon from '@mui/icons-material/Share';
 import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ label, projects }) => {
@@ -25,48 +27,57 @@ const ProjectCard = ({ label, projects }) => {
         sx={{ marginTop: '0px' }}
       >
         {projects?.map((item, index) => {
-          const { title, description, status, teamMembers, link } = item;
+          const { title, description, status, teamMembers, link, id } = item;
           return (
             <Grid item xs={12} sm={6} md={6} lg={6} key={index}>
-              <Link to={`/${link}`} style={{ textDecoration: 'none' }}>
+              <Tooltip title="Share coming soon..." arrow>
                 <Card
-                  sx={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}
+                  sx={{
+                    boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+                  }}
                 >
-                  <CardActionArea href="projects">
-                    <CardContent>
-                      <Typography
-                        gutterBottom
-                        variant="subtitle1"
-                        component="div"
-                      >
-                        {title}
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary">
-                        {description}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        component="div"
-                      >
-                        Status: {status}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        component="div"
-                      >
-                        Team Members: {teamMembers.join(', ')}
-                      </Typography>
-                    </CardContent>
+                  <CardActionArea>
+                    <Link
+                      to={`/${link}/${id}`}
+                      style={{ textDecoration: 'none', color: 'inherit' }}
+                    >
+                      <CardContent sx={{ minHeight: '190px' }}>
+                        <Typography
+                          gutterBottom
+                          variant="subtitle1"
+                          component="div"
+                        >
+                          {title}
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          {description}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          component="div"
+                        >
+                          Status: {status}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          component="div"
+                        >
+                          Team Members: {teamMembers.join(', ')}
+                        </Typography>
+                      </CardContent>
+                    </Link>
                   </CardActionArea>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      Share
-                    </Button>
+                    <Tooltip title="Share" arrow>
+                      <IconButton color="inherit" size="small">
+                        <ShareIcon fontSize="small" />
+                      </IconButton>
+                    </Tooltip>
                   </CardActions>
                 </Card>
-              </Link>
+              </Tooltip>
             </Grid>
           );
         })}

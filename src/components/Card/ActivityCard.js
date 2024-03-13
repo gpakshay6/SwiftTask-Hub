@@ -53,11 +53,9 @@ const useStyles = makeStyles((theme) => ({
 
 const ActivityCard = ({ label, activities }) => {
   const classes = useStyles();
-  const { showAllActivities } = useContext(ActivitiesContext);
+  const { showAll } = useContext(ActivitiesContext);
 
-  const visibleActivities = showAllActivities
-    ? activities
-    : activities.slice(0, 3);
+  const visibleActivities = showAll ? activities : activities.slice(0, 3);
 
   return (
     <>
@@ -80,7 +78,7 @@ const ActivityCard = ({ label, activities }) => {
                     >
                       {title}
                     </Typography>
-                    {showAllActivities && (
+                    {showAll && (
                       <>
                         <Typography
                           variant="body2"
@@ -106,7 +104,7 @@ const ActivityCard = ({ label, activities }) => {
           </Link>
         );
       })}
-      {!showAllActivities && (
+      {!showAll && (
         <Link to={'/activity'} className={classes.viewMore}>
           <Typography variant="caption">View More</Typography>
         </Link>
