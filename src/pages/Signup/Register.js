@@ -20,7 +20,7 @@ const Register = () => {
       data.get('email') !== '' &&
       data.get('password') !== ''
     ) {
-      localStorage.setItem('token', 'wrsedtrfghrsetdftg');
+      // localStorage.setItem('token', 'wrsedtrfghrsetdftg');
       navigate('/');
     }
   };
