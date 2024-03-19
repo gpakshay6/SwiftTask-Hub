@@ -1,6 +1,6 @@
 # SwiftTask-Hub
 
-## SwiftTask-Hub is a web application aimed at enhancing task and project management efficiency. It provides users with a robust set of features to organize tasks, collaborate on projects, and monitor progress effectively.
+**SwiftTask-Hub is a web application aimed at enhancing task and project management efficiency. It provides users with a robust set of features to organize tasks, collaborate on projects, and monitor progress effectively.**
 
 ### Components
 
@@ -21,7 +21,7 @@
 Usage
 
 1. Clone the repository:
-   `git clone [repository-url]`(https://github.com/gpakshay6/SwiftTask-Hub.git)
+   `git clone https://github.com/gpakshay6/SwiftTask-Hub.git`
 
 2. Install dependencies:
    `npm install`
@@ -39,6 +39,6 @@ Contributions to SwiftTask-Hub are welcome! Please refer to the CONTRIBUTING.md 
 This project is licensed under the MIT License.
 
 **Contact**
-For any inquiries or feedback, please contact [gowda.akshay27@gmail.com].
+For any inquiries or feedback, please contact [contact](gowda.akshay27@gmail.com) me.
 
 Feel free to customize the README according to your project's specifics and preferences.
