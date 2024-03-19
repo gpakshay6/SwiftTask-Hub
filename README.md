@@ -18,7 +18,7 @@
 
 **Authentication**: The application includes essential user authentication features such as login, forgot password, and register pages to ensure secure access to user accounts and data.
 
-Usage
+### Usage
 
 1. Clone the repository:
    `git clone https://github.com/gpakshay6/SwiftTask-Hub.git`
