@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {
   Button,
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-  let token = localStorage.getItem('token');
+  // let token = localStorage.getItem('token');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -60,12 +61,12 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    if (token) {
-      navigate('home');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     navigate('home');
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [token]);
 
   return (
     <>

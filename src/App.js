@@ -24,6 +24,7 @@ const PrivateRoute = ({ component }) => {
       navigate('/');
     }
   }, [token, navigate]);
+
   return (
     <ActivitiesProvider>
       <Toolbar />
