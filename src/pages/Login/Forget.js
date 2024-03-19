@@ -1,14 +1,56 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import {
+  Button,
+  CssBaseline,
+  TextField,
+  Grid,
+  Box,
+  Typography,
+  Container,
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+    margin: theme.spacing(2, 0),
+  },
+  logo: {
+    flexGrow: 0,
+    height: '40px',
+    width: '40px',
+    backgroundColor: '#fff',
+    marginRight: theme.spacing(1),
+    borderRadius: '50%',
+  },
+  mainContainer: {
+    height: '80vh',
+  },
+  background: {
+    backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  formContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    height: '100%',
+  },
+  form: {
+    marginTop: theme.spacing(2),
+    width: '100%',
+  },
+  viewMore: {
+    textDecoration: 'none',
+  },
+}));
 
 const Forget = () => {
+  const classes = useStyles();
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -21,48 +63,18 @@ const Forget = () => {
 
   return (
     <>
-      <div style={{ display: 'flex', alignItems: 'center', margin: '15px' }}>
-        <img
-          src="../Slogo.png"
-          alt="Logo"
-          style={{
-            flexGrow: 0,
-            height: '40px',
-            width: '40px',
-            backgroundColor: '#fff',
-            marginRight: '5px',
-          }}
-        />
+      <div className={classes.root}>
+        <img src="../Slogo.png" alt="Logo" className={classes.logo} />
         <Typography component="h1" variant="h6" color="inherit">
           SwiftTask Hub
         </Typography>
       </div>
-      <Grid container component="main" sx={{ height: '80vh' }}>
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage:
-              'url(https://source.unsplash.com/random?wallpapers)',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
+      <Grid container component="main" className={classes.mainContainer}>
+        <Grid item xs={false} lg={7} className={classes.background} />
         <Grid item sm={12} md={12} lg={5}>
           <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <Box
-              sx={{
-                marginTop: 2,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                height: '80vh',
-              }}
-            >
+            <Box className={classes.formContainer}>
               <img
                 src="../Slogo.png"
                 alt="Logo"
@@ -71,7 +83,7 @@ const Forget = () => {
                   height: '40px',
                   width: '40px',
                   backgroundColor: '#fff',
-                  borderRadius: '50%',
+                  marginRight: '5px',
                 }}
               />
               <Typography component="h1" variant="h6">
@@ -80,8 +92,8 @@ const Forget = () => {
               <Box
                 component="form"
                 onSubmit={handleSubmit}
+                className={classes.form}
                 noValidate
-                sx={{ mt: 1 }}
               >
                 <TextField
                   margin="normal"
@@ -106,7 +118,7 @@ const Forget = () => {
                 </Button>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
-                    <Link to="/">
+                    <Link to="/" className={classes.viewMore}>
                       <Typography variant="body2">Back to Login</Typography>
                     </Link>
                   </Grid>

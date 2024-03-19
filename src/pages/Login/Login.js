@@ -1,5 +1,4 @@
-// import React, { useEffect } from 'react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {
   Button,
@@ -45,12 +44,15 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
     width: '100%',
   },
+  viewMore: {
+    textDecoration: 'none',
+  },
 }));
 
 const Login = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-  // let token = localStorage.getItem('token');
+  let token = localStorage.getItem('token');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -61,12 +63,12 @@ const Login = () => {
     }
   };
 
-  // useEffect(() => {
-  //   if (token) {
-  //     navigate('home');
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [token]);
+  useEffect(() => {
+    if (token) {
+      navigate('home');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
 
   return (
     <>
@@ -135,12 +137,20 @@ const Login = () => {
                 </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link to="forgot" variant="body2">
+                    <Link
+                      to="forgot"
+                      variant="body2"
+                      className={classes.viewMore}
+                    >
                       <Typography variant="body2">Forgot password?</Typography>
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Link to="register" variant="body2">
+                    <Link
+                      to="register"
+                      variant="body2"
+                      className={classes.viewMore}
+                    >
                       <Typography variant="body2">
                         Don't have an account? Register
                       </Typography>
