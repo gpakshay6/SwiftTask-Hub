@@ -1,14 +1,24 @@
-import * as React from 'react';
+import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import {
+  Button,
+  CssBaseline,
+  TextField,
+  Grid,
+  Box,
+  Typography,
+  Container,
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  viewMore: {
+    textDecoration: 'none',
+  },
+}));
 
 const Register = () => {
+  const classes = useStyles();
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -20,7 +30,6 @@ const Register = () => {
       data.get('email') !== '' &&
       data.get('password') !== ''
     ) {
-      // localStorage.setItem('token', 'wrsedtrfghrsetdftg');
       navigate('/');
     }
   };
@@ -147,7 +156,7 @@ const Register = () => {
                 </Button>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
-                    <Link to="/" variant="body2">
+                    <Link to="/" variant="body2" className={classes.viewMore}>
                       <Typography variant="body2">
                         Already have an account? Sign in
                       </Typography>
